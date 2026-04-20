@@ -28,12 +28,10 @@ nutrivision/
 ├── utils/
 │   ├── schemas.py           # Pydantic schemas (AgentState, Ingredient, etc.)
 │   └── prompts.py           # Plantillas de prompts (visión y razonamiento)
-├── eval/
-│   ├── evaluate.py          # Script de evaluación (F1, MAE, latencia)
-│   ├── test_images/         # 14 imágenes anotadas para evaluación
-│   └── results_final.json   # Resultados de la evaluación final
-└── report/
-    └── informe_tecnico.tex  # Informe técnico en LaTeX
+└── eval/
+    ├── evaluate.py          # Script de evaluación (F1, MAE, latencia)
+    ├── test_images/         # 14 imágenes anotadas para evaluación
+    └── results_final.json   # Resultados de la evaluación final
 ```
 
 ## Requisitos
