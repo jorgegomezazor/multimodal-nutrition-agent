@@ -32,3 +32,9 @@ eval/results.json
 # OS
 .DS_Store
 Thumbs.db
+
+# PPTX
+*.pptx
+
+#Report
+report/

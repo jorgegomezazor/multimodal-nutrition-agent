@@ -1,7 +1,0 @@
-\begin{abstractpage}
-
-\begin{abstract}
-    This project proposes the development and training of an autonomous agent using Deep Reinforcement Learning (DRL) to play "Escoba," a traditional Spanish card game characterized by imperfect information. The game environment is modeled as a Partially Observable Markov Decision Process (POMDP). The state space is designed XXXXXXXXXX, cards on the table, captured card history, round objective progress, and global scores, ensuring the Markov property. The action space is discrete, combining the card selected from the hand and the target combination on the table, and employs Action Masking to strictly prevent illegal moves. To mitigate sparse rewards and balance short- and long-term strategic goals, the reward function is structurally divided into immediate, round-based, and game-based payouts. Proximal Policy Optimization (PPO) is selected as the training algorithm due to its convergence stability and native compatibility with Action Masking, proving superior for this context compared to evaluated alternatives such as DQN, SAC, and AlphaZero.
-\end{abstract}
-
-\end{abstractpage}
