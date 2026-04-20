@@ -1,0 +1,41 @@
+{
+    "image_file": "salmon.jpg",
+    "ingredients": [
+        {
+            "name": "Fish, salmon, Atlantic, cooked, dry heat",
+            "grams": 180,
+            "calories": 374.4,
+            "protein_g": 36.7,
+            "carbs_g": 0.0,
+            "fat_g": 24.1,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Potatoes, flesh and skin, baked",
+            "grams": 120,
+            "calories": 111.6,
+            "protein_g": 3.0,
+            "carbs_g": 25.4,
+            "fat_g": 0.1,
+            "fiber_g": 2.6
+        },
+        {
+            "name": "Broccoli, cooked, boiled, drained",
+            "grams": 100,
+            "calories": 35.0,
+            "protein_g": 2.4,
+            "carbs_g": 7.2,
+            "fat_g": 0.4,
+            "fiber_g": 3.3
+        },
+        {
+            "name": "Oil, olive, salad or cooking",
+            "grams": 15,
+            "calories": 132.6,
+            "protein_g": 0.0,
+            "carbs_g": 0.0,
+            "fat_g": 15.0,
+            "fiber_g": 0.0
+        }
+    ]
+}

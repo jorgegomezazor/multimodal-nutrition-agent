@@ -1,0 +1,41 @@
+{
+    "image_file": "wraps_pollo.jpg",
+    "ingredients": [
+        {
+            "name": "Tortillas, flour, white, ready-to-cook",
+            "grams": 120,
+            "calories": 374.4,
+            "protein_g": 9.6,
+            "carbs_g": 62.4,
+            "fat_g": 9.6,
+            "fiber_g": 2.5
+        },
+        {
+            "name": "Chicken, breast, grilled, cooked",
+            "grams": 120,
+            "calories": 198.0,
+            "protein_g": 37.2,
+            "carbs_g": 0.0,
+            "fat_g": 4.3,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Avocados, raw, all commercial varieties",
+            "grams": 80,
+            "calories": 128.0,
+            "protein_g": 1.6,
+            "carbs_g": 6.8,
+            "fat_g": 11.8,
+            "fiber_g": 5.4
+        },
+        {
+            "name": "Lettuce, cos or romaine, raw",
+            "grams": 20,
+            "calories": 3.4,
+            "protein_g": 0.2,
+            "carbs_g": 0.7,
+            "fat_g": 0.1,
+            "fiber_g": 0.4
+        }
+    ]
+}

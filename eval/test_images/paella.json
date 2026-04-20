@@ -1,0 +1,59 @@
+{
+    "image_file": "paella.jpg",
+    "ingredients": [
+        {
+            "name": "Rice, white, long-grain, cooked",
+            "grams": 250,
+            "calories": 325.0,
+            "protein_g": 6.7,
+            "carbs_g": 70.5,
+            "fat_g": 0.7,
+            "fiber_g": 1.0
+        },
+        {
+            "name": "Chicken, breast, grilled, cooked",
+            "grams": 80,
+            "calories": 132.0,
+            "protein_g": 24.8,
+            "carbs_g": 0.0,
+            "fat_g": 2.9,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Beans, snap, green, cooked, boiled",
+            "grams": 50,
+            "calories": 17.5,
+            "protein_g": 0.9,
+            "carbs_g": 4.0,
+            "fat_g": 0.1,
+            "fiber_g": 1.6
+        },
+        {
+            "name": "Peppers, sweet, red, raw",
+            "grams": 40,
+            "calories": 12.4,
+            "protein_g": 0.4,
+            "carbs_g": 2.4,
+            "fat_g": 0.1,
+            "fiber_g": 0.8
+        },
+        {
+            "name": "Saffron",
+            "grams": 1,
+            "calories": 3.1,
+            "protein_g": 0.1,
+            "carbs_g": 0.7,
+            "fat_g": 0.1,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Oil, olive, salad or cooking",
+            "grams": 15,
+            "calories": 132.6,
+            "protein_g": 0.0,
+            "carbs_g": 0.0,
+            "fat_g": 15.0,
+            "fiber_g": 0.0
+        }
+    ]
+}

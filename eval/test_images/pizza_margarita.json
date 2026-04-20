@@ -1,0 +1,59 @@
+{
+    "image_file": "pizza-margarita.jpg",
+    "ingredients": [
+        {
+            "name": "Pizza dough, wheat flour, white",
+            "grams": 200,
+            "calories": 532.0,
+            "protein_g": 18.0,
+            "carbs_g": 100.0,
+            "fat_g": 6.4,
+            "fiber_g": 4.6
+        },
+        {
+            "name": "Tomato sauce, canned",
+            "grams": 60,
+            "calories": 17.4,
+            "protein_g": 0.8,
+            "carbs_g": 3.2,
+            "fat_g": 0.3,
+            "fiber_g": 0.9
+        },
+        {
+            "name": "Cheese, mozzarella, whole milk",
+            "grams": 100,
+            "calories": 280.0,
+            "protein_g": 22.2,
+            "carbs_g": 2.2,
+            "fat_g": 17.1,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Tomatoes, red, ripe, raw",
+            "grams": 80,
+            "calories": 14.4,
+            "protein_g": 0.7,
+            "carbs_g": 3.1,
+            "fat_g": 0.2,
+            "fiber_g": 1.0
+        },
+        {
+            "name": "Basil, fresh",
+            "grams": 3,
+            "calories": 0.7,
+            "protein_g": 0.1,
+            "carbs_g": 0.1,
+            "fat_g": 0.0,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Oil, olive, salad or cooking",
+            "grams": 10,
+            "calories": 88.4,
+            "protein_g": 0.0,
+            "carbs_g": 0.0,
+            "fat_g": 10.0,
+            "fiber_g": 0.0
+        }
+    ]
+}

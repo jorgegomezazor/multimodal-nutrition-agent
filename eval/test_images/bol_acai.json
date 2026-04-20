@@ -1,0 +1,68 @@
+{
+    "image_file": "bol-acai.jpg",
+    "ingredients": [
+        {
+            "name": "Acai berry, frozen, unsweetened, pulp",
+            "grams": 150,
+            "calories": 105.0,
+            "protein_g": 1.5,
+            "carbs_g": 6.0,
+            "fat_g": 7.5,
+            "fiber_g": 4.5
+        },
+        {
+            "name": "Bananas, raw",
+            "grams": 50,
+            "calories": 44.5,
+            "protein_g": 0.5,
+            "carbs_g": 11.4,
+            "fat_g": 0.2,
+            "fiber_g": 1.3
+        },
+        {
+            "name": "Strawberries, raw",
+            "grams": 40,
+            "calories": 12.8,
+            "protein_g": 0.3,
+            "carbs_g": 3.1,
+            "fat_g": 0.1,
+            "fiber_g": 0.8
+        },
+        {
+            "name": "Blueberries, raw",
+            "grams": 30,
+            "calories": 17.1,
+            "protein_g": 0.2,
+            "carbs_g": 4.3,
+            "fat_g": 0.1,
+            "fiber_g": 0.7
+        },
+        {
+            "name": "Mangos, raw",
+            "grams": 40,
+            "calories": 24.0,
+            "protein_g": 0.3,
+            "carbs_g": 6.0,
+            "fat_g": 0.2,
+            "fiber_g": 0.6
+        },
+        {
+            "name": "Granola, oats, honey, raisins",
+            "grams": 40,
+            "calories": 188.4,
+            "protein_g": 4.1,
+            "carbs_g": 25.6,
+            "fat_g": 8.0,
+            "fiber_g": 2.2
+        },
+        {
+            "name": "Coconut meat, dried, shredded",
+            "grams": 5,
+            "calories": 32.5,
+            "protein_g": 0.3,
+            "carbs_g": 1.2,
+            "fat_g": 3.2,
+            "fiber_g": 0.8
+        }
+    ]
+}

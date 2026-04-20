@@ -1,0 +1,32 @@
+{
+    "image_file": "pollo_y_arroz.jpg",
+    "ingredients": [
+        {
+            "name": "Rice, white, long-grain, cooked",
+            "grams": 200,
+            "calories": 260.0,
+            "protein_g": 5.4,
+            "carbs_g": 56.4,
+            "fat_g": 0.6,
+            "fiber_g": 0.8
+        },
+        {
+            "name": "Chicken, breast, grilled, cooked",
+            "grams": 150,
+            "calories": 247.5,
+            "protein_g": 46.5,
+            "carbs_g": 0.0,
+            "fat_g": 5.4,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Oil, olive, salad or cooking",
+            "grams": 10,
+            "calories": 88.4,
+            "protein_g": 0.0,
+            "carbs_g": 0.0,
+            "fat_g": 10.0,
+            "fiber_g": 0.0
+        }
+    ]
+}

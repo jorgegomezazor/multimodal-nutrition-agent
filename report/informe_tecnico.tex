@@ -1,0 +1,432 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2cm]{geometry}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{caption}
+
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue}
+
+\titleformat{\section}{\large\bfseries}{{\thesection.}}{0.5em}{}[\vspace{-0.3em}\rule{\linewidth}{0.4pt}]
+\titleformat{\subsection}{\normalsize\bfseries}{{\thesubsection}}{0.5em}{}
+\titlespacing*{\section}{0pt}{1em}{0.4em}
+\titlespacing*{\subsection}{0pt}{0.6em}{0.2em}
+
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+% ── Portada ──────────────────────────────────────────────────────────────────
+\begin{titlepage}
+  \centering
+  \includegraphics[width=0.55\textwidth]{images/logo_icai.png}\\[2.5em]
+  {\large\bfseries UNIVERSIDAD PONTIFICIA COMILLAS}\\[0.4em]
+  {\normalsize Escuela Técnica Superior de Ingeniería ICAI}\\[1.2em]
+  {\normalsize\bfseries Master en Inteligencia Artificial}\\[2.5em]
+  {\normalsize Modelos Generativos Profundos}\\[1em]
+  \rule{\textwidth}{0.4pt}\\[1em]
+  {\LARGE\bfseries NutriVision}\\[0.6em]
+  {\large Agente Multimodal de Análisis Nutricional por Imagen}\\[1em]
+  \rule{\textwidth}{0.4pt}
+  \vfill
+  \begin{flushleft}
+    \textit{autores}\\[0.8em]
+    \begin{tabular}{l@{\quad--\quad}r}
+      Jorge Gómez Azor       & 202107216 \\[0.3em]
+      Mario Kroll Merino     & 202113781 \\[0.3em]
+      Carlos Mazuecos Reillo & 202106145 \\
+    \end{tabular}
+  \end{flushleft}
+  \vfill
+  {\large\bfseries Madrid, Abril 2026}
+\end{titlepage}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Definición del Problema}
+
+Muchas personas desconocen el valor nutricional real de lo que comen. Calcular manualmente
+calorías es tedioso, requiere conocimientos especializados y suele resultar en estimaciones
+imprecisas, pese a que el interés por la alimentación saludable no para de crecer. La obesidad y las
+enfermedades metabólicas siguen siendo uno de los principales problemas de salud pública a nivel
+global, y en un contexto más cotidiano cada vez hay más gente con objetivos concretos de
+composición corporal —recorte, volumen, mantenimiento— para quienes registrar lo que comen
+marca la diferencia pero hacerlo bien les resulta insostenible.
+
+\textbf{NutriVision} es un agente multimodal que permite al usuario fotografiar cualquier plato y
+recibir al instante un análisis nutricional completo: identifica automáticamente los ingredientes
+visibles, estima sus porciones y calcula calorías, proteínas, carbohidratos y grasa, generando además
+un informe personalizado adaptado al perfil metabólico del usuario. El sistema tiene aplicación
+directa en apps de bienestar y seguimiento dietético personal, así como en el apoyo a consultas de
+nutrición clínica.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Diseño del Sistema}
+
+\subsection{Arquitectura General}
+
+NutriVision implementa un \textit{pipeline} secuencial orquestado con \textbf{LangGraph}, compuesto
+por cuatro nodos que transforman la imagen de entrada en un informe estructurado:
+
+\begin{center}
+\small
+\texttt{Imagen + Perfil $\;\to\;$ [vision] $\;\to\;$ [rag] $\;\to\;$ [usda] $\;\to\;$ [reasoning] $\;\to\;$ Informe}
+\end{center}
+
+El estado compartido entre nodos es un objeto \texttt{AgentState} (Pydantic) que transporta la
+imagen en base64, el perfil de usuario, la lista de ingredientes identificados, los datos nutricionales
+de ambas fuentes (RAG y USDA API) y el informe final.
+
+\subsection{Nodo de Visión}
+
+El módulo de visión recibe la imagen en base64 y aplica un \textit{prompt} estructurado que instruye
+al modelo a: (1) identificar todos los ingredientes visibles incluyendo aceites y salsas, y (2)
+clasificar el tamaño de cada porción en una de cuatro categorías: \texttt{small} (×0,6),
+\texttt{normal} (×1,0), \texttt{large} (×1,5) o \texttt{extra} (×2,0).
+
+Esta clasificación cualitativa, en lugar de estimación directa en gramos, es una decisión de diseño
+clave que se justifica en la Sección~3. Los gramos estimados se obtienen multiplicando un peso de
+referencia por categoría de alimento (tabla \texttt{\_STANDARD\_GRAMS}, 80+ entradas derivadas de
+guías USDA) por el multiplicador de porción.
+
+La cadena de \textit{fallback} del modelo de visión es:
+\begin{enumerate}[noitemsep, topsep=2pt]
+  \item \textbf{Qwen2.5-VL-72B-Instruct} (HuggingFace Inference API) — modelo principal.
+  \item \textbf{Llama-4-Scout-17B-16E-Instruct} (Groq) — fallback gratuito, 14.400 req/día.
+  \item \textbf{Gemini 2.0 Flash} (Google AI) — fallback con reintentos exponenciales ante rate-limit.
+\end{enumerate}
+
+\subsection{Nodo RAG}
+
+El módulo RAG mantiene una base de datos vectorial local con \textbf{ChromaDB} (~300 alimentos
+USDA), codificados con \textbf{sentence-transformers/all-MiniLM-L6-v2} (384 dimensiones, índice
+HNSW con distancia coseno). Para cada ingrediente, recupera el alimento más similar
+semánticamente y escala sus macronutrientes por el peso estimado. Este nodo se conserva
+exclusivamente para comparación experimental; sus resultados no se exponen en la interfaz.
+
+\subsection{Nodo USDA API}
+
+El módulo principal de recuperación nutricional consulta \textbf{USDA FoodData Central}
+(\texttt{/fdc/v1/foods/search}), filtrando alimentos \textit{Foundation} y \textit{SR Legacy}
+(valores por 100\,g, sin procesados de marca).
+
+Antes de cada consulta se aplica una normalización del nombre del ingrediente mediante 130+ alias
+(p.ej., \texttt{"omelette"} $\to$ \texttt{"egg whole"}, \texttt{"cooked oatmeal"} $\to$
+\texttt{"oatmeal cooked water"}, \texttt{"baguette"} $\to$ \texttt{"bread french vienna"}). Si no
+existe alias, se eliminan modificadores de cocción (\textit{diced}, \textit{roasted}, \textit{sliced},
+etc.) para aproximar el término a la nomenclatura USDA.
+
+Los resultados se validan contra límites fisiológicos:
+\begin{itemize}[noitemsep, topsep=2pt]
+  \item Energía $\leq 900$\,kcal/100\,g (el aceite puro aporta $\sim$884\,kcal/100\,g).
+  \item Ningún macronutriente $> 100$\,g/100\,g.
+\end{itemize}
+La extracción de calorías distingue explícitamente entre unidades \texttt{KCAL} y \texttt{KJ},
+convirtiendo cuando es necesario (factor 4,184).
+
+\subsection{Nodo de Razonamiento}
+
+El módulo de razonamiento emplea \textbf{Qwen2.5-7B-Instruct} (HuggingFace) para generar un
+informe personalizado en español. El \textit{prompt} incluye:
+\begin{itemize}[noitemsep, topsep=2pt]
+  \item \textbf{Perfil metabólico} calculado con la ecuación de \textbf{Mifflin-St Jeor}, la
+        fórmula clínica más utilizada y validada para estimar el gasto calórico diario a partir de
+        datos antropométricos básicos. Primero estima la \textit{Tasa Metabólica Basal} (BMR): las
+        calorías que el cuerpo necesita en reposo absoluto para mantener sus funciones vitales.
+        Después multiplica ese valor por un factor de actividad física para obtener el
+        \textit{Gasto Energético Total Diario} (TDEE). Finalmente ajusta ese total según el
+        objetivo del usuario (déficit para adelgazar, superávit para ganar masa o mantenimiento):
+        \[
+          \text{BMR}=10w+6{,}25h-5a+s, \quad
+          \text{TDEE}=\text{BMR}\times k_{\text{actividad}},\quad
+          \text{objetivo}=\text{TDEE}\pm\Delta
+        \]
+        donde $w$ es el peso en kg, $h$ la altura en cm, $a$ la edad en años, $s=+5$ (hombre) /
+        $-161$ (mujer), $k\in[1{,}2;\,1{,}9]$ según nivel de actividad
+        y $\Delta\in\{-400, 0, +300\}$\,kcal según objetivo.
+  \item \textbf{Contexto del día}: comida actual, ingestas ya registradas y comidas pendientes.
+  \item \textbf{Tabla nutricional} de la comida analizada y presupuesto calórico restante.
+\end{itemize}
+
+\subsection{Interfaz y Persistencia}
+
+La aplicación web está implementada con \textbf{Streamlit} (multipágina). Incluye gestión de perfil
+de usuario indexado por email, seguimiento diario de macros y un \textit{dashboard} con historial
+de 30 días. La persistencia se gestiona con \textbf{SQLite} (tablas \texttt{users} y
+\texttt{meal\_logs}), lo que permite acumular el progreso diario antes de cada análisis.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Decisiones de Arquitectura}
+
+\subsection{Clasificación cualitativa de porción vs. estimación en gramos}
+
+La primera implementación pedía al modelo de visión estimaciones directas en gramos. Los
+resultados mostraron sobreestimaciones sistemáticas de 3–7× respecto al ground truth: el modelo
+trataba cada ingrediente como porción independiente en lugar de como parte de un plato compartido.
+
+Se probaron mejoras del \textit{prompt} (anclas de peso total del plato, referencias de tamaño) y
+normalización post-procesado. La mejora fue marginal (--7\% en MAE de calorías).
+
+La solución adoptada reformula la tarea: el modelo solo clasifica el tamaño relativo (small /
+normal / large / extra). Los gramos absolutos los aporta la tabla de pesos estándar, basada en
+fuentes nutricionales reconocidas. Esta separación de responsabilidades fue la decisión más
+impactante de todo el proceso iterativo.
+
+\subsection{USDA API directa vs. Tavily web search vs. RAG local}
+
+Se evaluaron tres estrategias de recuperación nutricional:
+
+\begin{itemize}[noitemsep, topsep=2pt]
+  \item \textbf{RAG local}: Vector store con 300 alimentos. Sin latencia de red ni coste de API, pero
+        cobertura insuficiente (no cubre emmental, prosciutto, açaí) y la búsqueda semántica falla
+        cuando la nomenclatura del modelo de visión difiere de la USDA.
+  \item \textbf{Tavily web search}: Los textos web mezclan valores por porción, por 100\,g y
+        porcentajes de valor diario. La extracción por regex producía errores críticos (MAE calorías:
+        266\%).
+  \item \textbf{USDA FoodData Central API}: Datos estructurados por 100\,g sin ambigüedad. Tras
+        añadir normalización de nombres y validación fisiológica, fue la estrategia más precisa.
+\end{itemize}
+
+\subsection{Validación de límites fisiológicos}
+
+Se descubrió que algunas entradas USDA reportan energía en kJ en lugar de kcal, y otras
+corresponden a concentrados con densidades imposibles ($>900$\,kcal/100\,g). Sin validación, estos
+outliers producían predicciones absurdas (p.ej., 5.138\,kcal para una ración de salmón con
+patatas y brócoli). El filtro \texttt{\_is\_plausible()} y la función \texttt{\_extract\_kcal()}
+redujeron el MAE de calorías de 68\% a 32\%.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Experimentos y Evaluación}
+
+\subsection{Dataset de Evaluación}
+
+Se construyó un conjunto de test de \textbf{14 imágenes} de platos reales, anotadas manualmente con
+ingredientes y pesos en gramos obtenidos de recetas verificadas. Los platos cubren una variedad
+representativa: desayunos (avena con plátano, yogur con nueces), platos mediterráneos (paella,
+lentejas, macarrones con carne, bocadillo), proteicos (salmón, pollo con arroz, tortilla francesa) y
+preparaciones internacionales (bol de açaí, wraps de pollo, pizza margarita).
+
+\subsection{Métricas}
+
+\begin{itemize}[noitemsep, topsep=2pt]
+  \item \textbf{Identificación}: Precisión, Recall y F1 con emparejamiento difuso a nivel de palabras
+        clave, eliminando \textit{stopwords} de cocción (\textit{raw}, \textit{cooked}, \textit{dried}…)
+        para manejar variantes morfológicas (\textit{banana}/\textit{bananas}, \textit{oat}/\textit{oats}).
+  \item \textbf{Porciones}: MAE en gramos para ingredientes correctamente identificados.
+  \item \textbf{Nutrición}: MAE absoluto y porcentual para calorías, proteínas, carbohidratos y grasa,
+        comparando totales predichos con ground truth.
+  \item \textbf{Latencia}: Tiempo de respuesta extremo a extremo por imagen.
+\end{itemize}
+
+\subsection{Resultados de Identificación}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Métrica} & \textbf{Groq (eval final)} & \textbf{HF Qwen2.5-VL (ejecuciones previas)} \\
+\midrule
+F1 medio        & 0,756 & 0,826 \\
+Precisión media & 0,807 & 0,860 \\
+Recall medio    & 0,729 & 0,817 \\
+MAE porciones   & 37,9\,g & 21,2\,g \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Métricas de identificación de ingredientes por proveedor de visión.}
+\end{center}
+
+La diferencia refleja la superioridad del modelo principal (Qwen2.5-VL-72B) sobre el fallback
+(Llama-4-Scout-17B). En la evaluación final todos los análisis recayeron en Groq por agotamiento
+de créditos de HuggingFace.
+
+\subsection{Evolución del Error Nutricional}
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Versión del sistema} & \textbf{MAE calorías} & \textbf{MAE \%} \\
+\midrule
+RAG local (baseline)                           & 1.337\,kcal & 233\% \\
+Tavily web search                              & $\sim$1.368\,kcal & 266\% \\
+USDA API + gramos estimados por visión         & 1.267\,kcal & 243\% \\
+USDA + tabla de porciones estándar             & 1.276\,kcal & 241\% \\
+\quad + validación límites fisiológicos        & 356\,kcal   &  68\% \\
+\quad + normalización aliases \textbf{(final)} & \textbf{184\,kcal} & \textbf{32\%} \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Evolución del MAE de calorías a lo largo del proceso de mejora iterativa.}
+\end{center}
+
+\subsection{Resultados Finales}
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Métrica} & \multicolumn{2}{c}{\textbf{RAG}} & \multicolumn{2}{c}{\textbf{USDA API}} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+ & abs & \% & abs & \% \\
+\midrule
+Calorías   & 1.567\,kcal & 267\% & \textbf{184\,kcal} & \textbf{32\%} \\
+Proteína   & 14,0\,g     &  44\% & 13,7\,g            &  46\% \\
+Carbohidratos & 89,3\,g  & 819\% & \textbf{28,9\,g}   & \textbf{56\%} \\
+Grasa      & 39,5\,g     & 158\% & \textbf{9,3\,g}    & \textbf{40\%} \\
+\midrule
+Latencia media & \multicolumn{2}{c}{2,6\,s} & \multicolumn{2}{c}{7,9\,s} \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Resultados nutricionales finales. USDA API supera al RAG en todas las métricas excepto latencia.}
+\end{center}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Análisis de Resultados}
+
+\subsection{Fuente de las Mejoras}
+
+La reducción de MAE de 243\% a 32\% en calorías se debe a tres intervenciones independientes,
+ordenadas por impacto:
+
+\begin{enumerate}[noitemsep, topsep=2pt]
+  \item \textbf{Validación fisiológica} (68\%→32\%): El error más crítico era que algunas entradas
+        USDA reportan energía en kJ, produciendo valores $\sim$4× inflados que generaban predicciones
+        absurdas.
+  \item \textbf{Tabla de porciones estándar} (243\%→68\%): Reemplazar la estimación libre de gramos
+        por una tabla de pesos de referencia eliminó las sobreestimaciones sistemáticas del modelo de
+        visión.
+  \item \textbf{Normalización de aliases} (68\%→32\%): La nomenclatura del modelo de visión y la de
+        USDA difieren sustancialmente. \textit{"Omelette"} no existe en USDA; \textit{"cooked oatmeal"}
+        recupera avena seca (389\,kcal/100\,g) en lugar de cocida (71\,kcal/100\,g).
+\end{enumerate}
+
+\subsection{Casos Outlier Residuales}
+
+Tres platos concentran el error residual de calorías:
+
+\begin{itemize}[noitemsep, topsep=2pt]
+  \item \textbf{Salmón} (174 vs. 654\,kcal, $-$73\%): \textit{"salmon fillet"} sin prefijo
+        \textit{"roasted"} no activa el alias y recupera un alimento incorrecto.
+  \item \textbf{Bol de açaí} (669 vs. 424\,kcal, $+$58\%): Error acumulado en siete ingredientes;
+        granola y açaí tienen densidades calóricas altas.
+  \item \textbf{Macarrones con carne} (1.259 vs. 704\,kcal, $+$79\%): \textit{"penne pasta"}
+        recupera pasta seca (357\,kcal/100\,g) en lugar de cocida (158\,kcal/100\,g).
+\end{itemize}
+
+Excluyendo estos tres casos, el MAE medio bajaría a $\sim$\textbf{105\,kcal} ($\sim$19\%), comparable
+al rendimiento de apps comerciales de referencia.
+
+\subsection{Limitaciones}
+
+\begin{itemize}[noitemsep, topsep=2pt]
+  \item La calidad de identificación depende del proveedor disponible en cada momento (F1: 0,826
+        con Qwen2.5-VL-72B vs. 0,756 con Llama-4-Scout).
+  \item La estimación de porciones es intrínsecamente imprecisa en fotografías 2D sin información
+        de profundidad.
+  \item El sistema no distingue entre preparaciones con diferente perfil calórico del mismo
+        ingrediente (pasta cruda vs. cocida, carne sin aceite vs. con aceite).
+\end{itemize}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Escalabilidad}
+
+\subsection{Cuellos de Botella Actuales}
+
+El principal cuello de botella es la latencia del módulo de visión (4–8\,s por análisis), dependiente
+de APIs externas con disponibilidad variable. La cadena de \textit{fallback} introduce variabilidad
+adicional: si HuggingFace experimenta tiempos elevados, el sistema recae en Groq, con un modelo de
+menor capacidad.
+
+\subsection{Camino hacia Producción}
+
+\textbf{Infraestructura:} Desplegar en Streamlit Cloud o HuggingFace Spaces para acceso web sin
+gestión de servidores. Para alto volumen, arquitectura de colas (Redis + Celery) que desacople la
+recepción de imágenes del procesamiento, permitiendo paralelización. Reemplazar SQLite por
+PostgreSQL gestionado (p.ej., Supabase) para soporte multi-usuario concurrente.
+
+\textbf{Módulo de visión:} Contratar un tier de pago en Groq o HuggingFace para garantizar SLA de
+latencia. Alternativamente, desplegar Qwen2.5-VL-7B en GPU propia (A10G, $\sim$0,70\,€/h en
+cloud) para latencia consistente de 1–2\,s con independencia de APIs externas.
+
+\textbf{Módulo nutricional:} La API de USDA es gratuita e ilimitada. La tabla de aliases puede
+mantenerse como fichero YAML versionado y actualizarse con los fallos detectados en producción
+mediante \textit{logging} automático de consultas sin resultado.
+
+\textbf{Privacidad:} Las imágenes no se almacenan (procesamiento \textit{stateless}). En entorno
+clínico sería necesario cifrado en reposo y cumplimiento del RGPD.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Costes y Retorno Económico}
+
+\subsection{Costes Operativos por Análisis}
+
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+\textbf{Componente} & \textbf{Coste estimado} \\
+\midrule
+Visión (Groq, Llama-4-Scout)   & $\sim$0,00008\,€ / análisis \\
+Razonamiento (HF, Qwen2.5-7B)  & $\sim$0,00015\,€ / análisis \\
+USDA FoodData Central API       & 0\,€ (gratuita) \\
+\midrule
+\textbf{Total por análisis}    & \textbf{$\sim$0,0002\,€} \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Coste operativo por análisis nutricional.}
+\end{center}
+
+Con Groq Pro ($\sim$28\,€/mes), el sistema soportaría hasta 14.400 análisis/día sin coste variable
+adicional, resultando en $\sim$0,002\,€/análisis a plena capacidad.
+
+\subsection{Valor Aportado y ROI}
+
+Una consulta con nutricionista para análisis dietético cuesta 50–80\,€/sesión (30–60 min).
+NutriVision realiza el análisis en $\sim$10\,s con un coste operativo de 0,0002\,€, lo que representa
+un ratio de coste de $\times$250.000.
+
+Respecto al tiempo de registro manual: las apps convencionales requieren 3–7 min por comida (búsqueda,
+selección, ajuste de porciones). NutriVision lo reduce a $\sim$15\,s, un ahorro del 95\%. Un
+usuario que registra 3 comidas/día durante un mes ahorra $\sim$4,5 horas.
+
+En un modelo SaaS con 1.000 usuarios activos a 4,99\,€/mes:
+\begin{itemize}[noitemsep, topsep=2pt]
+  \item Ingresos: 4.990\,€/mes.
+  \item Costes (APIs + infraestructura + mantenimiento): $\sim$300\,€/mes.
+  \item \textbf{Margen bruto: $\sim$94\%}.
+\end{itemize}
+
+La principal barrera de adopción no es económica sino de confianza en la precisión. Un MAE de 32\%
+en calorías es suficiente para orientación general de bienestar pero insuficiente para uso clínico
+estricto, donde se requeriría validación médica adicional.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusiones}
+
+NutriVision demuestra que es posible construir un agente de análisis nutricional visual funcional
+combinando modelos multimodales de código abierto con fuentes de datos estructuradas gratuitas.
+La contribución más relevante no es el sistema en sí, sino el proceso de evaluación iterativa
+que identificó las causas reales del error:
+
+\begin{enumerate}[noitemsep, topsep=2pt]
+  \item La estimación libre de gramos por parte de modelos de visión es fundamentalmente inestable.
+        Reemplazarla por clasificación cualitativa con tabla de referencia es significativamente más
+        robusta.
+  \item Las fuentes web son inadecuadas para valores nutricionales por su ambigüedad de unidades.
+        Las APIs estructuradas (USDA) son preferibles.
+  \item El error más impactante en APIs estructuradas no es la precisión de los datos sino la
+        normalización del nombre del alimento: un alias incorrecto produce resultados tan malos como
+        no tener datos.
+\end{enumerate}
+
+El trabajo futuro más prometedor sería desplegar el sistema en producción y recopilar errores reales
+de usuarios para ampliar la tabla de aliases, cerrando el ciclo de mejora continua.
+
+\end{document}

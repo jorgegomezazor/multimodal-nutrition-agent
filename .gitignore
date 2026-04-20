@@ -1,0 +1,34 @@
+# Entorno virtual
+.venv/
+venv/
+env/
+
+# Variables de entorno (API keys)
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Datos generados
+data/chroma_db/
+data/nutrivision.db
+data/usda_foods.csv
+
+# Resultados de evaluación (opcionales, se regeneran)
+eval/results.json
+
+# Streamlit
+.streamlit/secrets.toml
+
+# IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db

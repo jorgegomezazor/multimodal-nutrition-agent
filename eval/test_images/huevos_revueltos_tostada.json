@@ -1,0 +1,41 @@
+{
+    "image_file": "huevos_revueltos_tostada.jpg",
+    "ingredients": [
+        {
+            "name": "Eggs, Grade A, Large, egg whole",
+            "grams": 120,
+            "calories": 171.6,
+            "protein_g": 15.1,
+            "carbs_g": 0.9,
+            "fat_g": 11.4,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Bread, whole wheat, toasted",
+            "grams": 60,
+            "calories": 148.2,
+            "protein_g": 7.8,
+            "carbs_g": 26.0,
+            "fat_g": 2.0,
+            "fiber_g": 3.6
+        },
+        {
+            "name": "Avocados, raw, all commercial varieties",
+            "grams": 60,
+            "calories": 96.0,
+            "protein_g": 1.2,
+            "carbs_g": 5.1,
+            "fat_g": 8.8,
+            "fiber_g": 4.0
+        },
+        {
+            "name": "Oil, olive, salad or cooking",
+            "grams": 5,
+            "calories": 44.2,
+            "protein_g": 0.0,
+            "carbs_g": 0.0,
+            "fat_g": 5.0,
+            "fiber_g": 0.0
+        }
+    ]
+}

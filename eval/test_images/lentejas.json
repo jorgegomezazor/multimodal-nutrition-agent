@@ -1,0 +1,59 @@
+{
+    "image_file": "lentejas.jpg",
+    "ingredients": [
+        {
+            "name": "Lentils, mature seeds, cooked, boiled",
+            "grams": 200,
+            "calories": 232.0,
+            "protein_g": 18.0,
+            "carbs_g": 40.2,
+            "fat_g": 0.8,
+            "fiber_g": 15.8
+        },
+        {
+            "name": "Potatoes, flesh and skin, boiled",
+            "grams": 80,
+            "calories": 69.6,
+            "protein_g": 1.5,
+            "carbs_g": 16.1,
+            "fat_g": 0.1,
+            "fiber_g": 1.4
+        },
+        {
+            "name": "Carrots, raw",
+            "grams": 40,
+            "calories": 16.4,
+            "protein_g": 0.4,
+            "carbs_g": 3.8,
+            "fat_g": 0.1,
+            "fiber_g": 1.1
+        },
+        {
+            "name": "Pork, cured, chorizo",
+            "grams": 30,
+            "calories": 136.5,
+            "protein_g": 7.2,
+            "carbs_g": 0.6,
+            "fat_g": 11.5,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Tomato sauce, canned",
+            "grams": 40,
+            "calories": 11.6,
+            "protein_g": 0.5,
+            "carbs_g": 2.2,
+            "fat_g": 0.2,
+            "fiber_g": 0.6
+        },
+        {
+            "name": "Oil, olive, salad or cooking",
+            "grams": 10,
+            "calories": 88.4,
+            "protein_g": 0.0,
+            "carbs_g": 0.0,
+            "fat_g": 10.0,
+            "fiber_g": 0.0
+        }
+    ]
+}

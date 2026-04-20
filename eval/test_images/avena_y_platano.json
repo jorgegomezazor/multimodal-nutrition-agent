@@ -1,0 +1,41 @@
+{
+    "image_file": "avena_y_platano.jpeg",
+    "ingredients": [
+        {
+            "name": "Oats, regular and quick, dry",
+            "grams": 50,
+            "calories": 189.5,
+            "protein_g": 6.6,
+            "carbs_g": 33.9,
+            "fat_g": 3.2,
+            "fiber_g": 5.0
+        },
+        {
+            "name": "Bananas, raw",
+            "grams": 80,
+            "calories": 71.2,
+            "protein_g": 0.9,
+            "carbs_g": 18.2,
+            "fat_g": 0.3,
+            "fiber_g": 2.1
+        },
+        {
+            "name": "Milk, whole, 3.25% milkfat",
+            "grams": 150,
+            "calories": 91.5,
+            "protein_g": 4.7,
+            "carbs_g": 7.2,
+            "fat_g": 4.9,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Cinnamon, ground",
+            "grams": 2,
+            "calories": 4.9,
+            "protein_g": 0.1,
+            "carbs_g": 1.6,
+            "fat_g": 0.0,
+            "fiber_g": 1.1
+        }
+    ]
+}

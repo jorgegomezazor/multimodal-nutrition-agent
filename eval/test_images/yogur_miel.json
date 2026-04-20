@@ -1,0 +1,32 @@
+{
+    "image_file": "yogur_miel.jpg",
+    "ingredients": [
+        {
+            "name": "Yogurt, Greek, plain, whole milk",
+            "grams": 200,
+            "calories": 194.0,
+            "protein_g": 18.0,
+            "carbs_g": 7.2,
+            "fat_g": 10.0,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Honey",
+            "grams": 25,
+            "calories": 76.0,
+            "protein_g": 0.1,
+            "carbs_g": 20.6,
+            "fat_g": 0.0,
+            "fiber_g": 0.1
+        },
+        {
+            "name": "Walnuts, english",
+            "grams": 20,
+            "calories": 130.8,
+            "protein_g": 3.0,
+            "carbs_g": 2.7,
+            "fat_g": 13.0,
+            "fiber_g": 1.3
+        }
+    ]
+}

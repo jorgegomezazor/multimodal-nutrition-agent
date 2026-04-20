@@ -1,0 +1,77 @@
+{
+    "image_file": "ensalada_huevo.jpg",
+    "ingredients": [
+        {
+            "name": "Lettuce, green leaf, raw",
+            "grams": 80,
+            "calories": 12.0,
+            "protein_g": 1.1,
+            "carbs_g": 2.3,
+            "fat_g": 0.1,
+            "fiber_g": 1.0
+        },
+        {
+            "name": "Eggs, Grade A, Large, egg whole",
+            "grams": 60,
+            "calories": 85.8,
+            "protein_g": 7.6,
+            "carbs_g": 0.4,
+            "fat_g": 5.7,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Fish, tuna, light, canned in water, drained",
+            "grams": 60,
+            "calories": 69.6,
+            "protein_g": 15.3,
+            "carbs_g": 0.0,
+            "fat_g": 0.5,
+            "fiber_g": 0.0
+        },
+        {
+            "name": "Corn, sweet, canned, drained",
+            "grams": 40,
+            "calories": 31.6,
+            "protein_g": 1.0,
+            "carbs_g": 6.8,
+            "fat_g": 0.2,
+            "fiber_g": 0.8
+        },
+        {
+            "name": "Tomatoes, red, ripe, raw",
+            "grams": 60,
+            "calories": 10.8,
+            "protein_g": 0.5,
+            "carbs_g": 2.3,
+            "fat_g": 0.1,
+            "fiber_g": 0.7
+        },
+        {
+            "name": "Carrots, raw",
+            "grams": 30,
+            "calories": 12.3,
+            "protein_g": 0.3,
+            "carbs_g": 2.9,
+            "fat_g": 0.1,
+            "fiber_g": 0.8
+        },
+        {
+            "name": "Cucumber, with peel, raw",
+            "grams": 40,
+            "calories": 6.0,
+            "protein_g": 0.3,
+            "carbs_g": 1.4,
+            "fat_g": 0.0,
+            "fiber_g": 0.2
+        },
+        {
+            "name": "Oil, olive, salad or cooking",
+            "grams": 10,
+            "calories": 88.4,
+            "protein_g": 0.0,
+            "carbs_g": 0.0,
+            "fat_g": 10.0,
+            "fiber_g": 0.0
+        }
+    ]
+}
