@@ -1,0 +1,1049 @@
+[
+  {
+    "image": "avena_y_platano.jpeg",
+    "latency_s": {
+      "vision": 1.84,
+      "rag": 14.67,
+      "usda": 4.98,
+      "total_rag": 16.51,
+      "total_usda": 6.82
+    },
+    "identification": {
+      "precision": 0.667,
+      "recall": 0.5,
+      "f1": 0.571,
+      "predicted": [
+        "cinnamon",
+        "oatmeal",
+        "sliced banana"
+      ],
+      "ground_truth": [
+        "bananas, raw",
+        "cinnamon, ground",
+        "milk, whole, 3.25% milkfat",
+        "oats, regular and quick, dry"
+      ]
+    },
+    "portion_mae_g": 80.5,
+    "rag": {
+      "predicted": {
+        "calories": 729.6,
+        "protein_g": 17.9,
+        "carbs_g": 143.4,
+        "fat_g": 8.9
+      },
+      "mae_abs": {
+        "calories": 372.5,
+        "protein_g": 5.6,
+        "carbs_g": 82.5,
+        "fat_g": 0.5
+      },
+      "mae_pct": {
+        "calories": 104.3,
+        "protein_g": 45.9,
+        "carbs_g": 135.4,
+        "fat_g": 5.6
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 322.0,
+        "protein_g": 6.4,
+        "carbs_g": 77.3,
+        "fat_g": 1.9
+      },
+      "mae_abs": {
+        "calories": 35.1,
+        "protein_g": 5.9,
+        "carbs_g": 16.4,
+        "fat_g": 6.5
+      },
+      "mae_pct": {
+        "calories": 9.8,
+        "protein_g": 47.7,
+        "carbs_g": 26.9,
+        "fat_g": 78.0
+      }
+    },
+    "ground_truth": {
+      "calories": 357.1,
+      "protein_g": 12.3,
+      "carbs_g": 60.9,
+      "fat_g": 8.4
+    }
+  },
+  {
+    "image": "bocata_jamon_y_queso.jpg",
+    "latency_s": {
+      "vision": 1.91,
+      "rag": 0.07,
+      "usda": 4.54,
+      "total_rag": 1.98,
+      "total_usda": 6.45
+    },
+    "identification": {
+      "precision": 0.333,
+      "recall": 0.333,
+      "f1": 0.333,
+      "predicted": [
+        "baguette",
+        "emmental cheese",
+        "jamón ibérico"
+      ],
+      "ground_truth": [
+        "bread, italian",
+        "cheese, manchego",
+        "pork, cured, ham, serrano, dry-cured"
+      ]
+    },
+    "portion_mae_g": 5.0,
+    "rag": {
+      "predicted": {
+        "calories": 440.6,
+        "protein_g": 19.5,
+        "carbs_g": 58.7,
+        "fat_g": 13.7
+      },
+      "mae_abs": {
+        "calories": 185.1,
+        "protein_g": 19.9,
+        "carbs_g": 1.5,
+        "fat_g": 10.8
+      },
+      "mae_pct": {
+        "calories": 29.6,
+        "protein_g": 50.5,
+        "carbs_g": 2.5,
+        "fat_g": 44.2
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 409.5,
+        "protein_g": 20.2,
+        "carbs_g": 52.4,
+        "fat_g": 13.3
+      },
+      "mae_abs": {
+        "calories": 216.2,
+        "protein_g": 19.2,
+        "carbs_g": 7.8,
+        "fat_g": 11.2
+      },
+      "mae_pct": {
+        "calories": 34.6,
+        "protein_g": 48.6,
+        "carbs_g": 13.0,
+        "fat_g": 45.8
+      }
+    },
+    "ground_truth": {
+      "calories": 625.8,
+      "protein_g": 39.400000000000006,
+      "carbs_g": 60.2,
+      "fat_g": 24.5
+    }
+  },
+  {
+    "image": "bol-acai.jpg",
+    "latency_s": {
+      "vision": 1.56,
+      "rag": 0.12,
+      "usda": 10.45,
+      "total_rag": 1.68,
+      "total_usda": 12.01
+    },
+    "identification": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "predicted": [
+        "acai",
+        "blueberries",
+        "diced mango",
+        "granola",
+        "shredded coconut",
+        "sliced banana",
+        "sliced strawberries"
+      ],
+      "ground_truth": [
+        "acai berry, frozen, unsweetened, pulp",
+        "bananas, raw",
+        "blueberries, raw",
+        "coconut meat, dried, shredded",
+        "granola, oats, honey, raisins",
+        "mangos, raw",
+        "strawberries, raw"
+      ]
+    },
+    "portion_mae_g": 42.9,
+    "rag": {
+      "predicted": {
+        "calories": 1773.2,
+        "protein_g": 8.5,
+        "carbs_g": 189.0,
+        "fat_g": 8.8
+      },
+      "mae_abs": {
+        "calories": 1348.9,
+        "protein_g": 1.3,
+        "carbs_g": 131.4,
+        "fat_g": 10.5
+      },
+      "mae_pct": {
+        "calories": 317.9,
+        "protein_g": 18.7,
+        "carbs_g": 228.1,
+        "fat_g": 54.6
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 668.9,
+        "protein_g": 12.7,
+        "carbs_g": 112.5,
+        "fat_g": 22.0
+      },
+      "mae_abs": {
+        "calories": 244.6,
+        "protein_g": 5.5,
+        "carbs_g": 54.9,
+        "fat_g": 2.7
+      },
+      "mae_pct": {
+        "calories": 57.6,
+        "protein_g": 76.5,
+        "carbs_g": 95.3,
+        "fat_g": 14.0
+      }
+    },
+    "ground_truth": {
+      "calories": 424.3,
+      "protein_g": 7.199999999999999,
+      "carbs_g": 57.6,
+      "fat_g": 19.3
+    }
+  },
+  {
+    "image": "ensalada_huevo.jpg",
+    "latency_s": {
+      "vision": 1.66,
+      "rag": 0.12,
+      "usda": 9.64,
+      "total_rag": 1.78,
+      "total_usda": 11.3
+    },
+    "identification": {
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1": 0.933,
+      "predicted": [
+        "boiled egg",
+        "corn kernels",
+        "diced tomatoes",
+        "mixed greens salad",
+        "shredded carrots",
+        "tuna salad"
+      ],
+      "ground_truth": [
+        "carrots, raw",
+        "corn, sweet, canned, drained",
+        "cucumber, with peel, raw",
+        "eggs, grade a, large, egg whole",
+        "fish, tuna, light, canned in water, drained",
+        "lettuce, green leaf, raw",
+        "oil, olive, salad or cooking",
+        "tomatoes, red, ripe, raw"
+      ]
+    },
+    "portion_mae_g": 28.3,
+    "rag": {
+      "predicted": {
+        "calories": 428.8,
+        "protein_g": 20.1,
+        "carbs_g": 31.4,
+        "fat_g": 10.8
+      },
+      "mae_abs": {
+        "calories": 112.3,
+        "protein_g": 6.0,
+        "carbs_g": 15.3,
+        "fat_g": 5.9
+      },
+      "mae_pct": {
+        "calories": 35.5,
+        "protein_g": 22.9,
+        "carbs_g": 95.3,
+        "fat_g": 35.6
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 236.7,
+        "protein_g": 25.8,
+        "carbs_g": 27.5,
+        "fat_g": 4.0
+      },
+      "mae_abs": {
+        "calories": 79.8,
+        "protein_g": 0.3,
+        "carbs_g": 11.4,
+        "fat_g": 12.7
+      },
+      "mae_pct": {
+        "calories": 25.2,
+        "protein_g": 1.0,
+        "carbs_g": 70.7,
+        "fat_g": 76.3
+      }
+    },
+    "ground_truth": {
+      "calories": 316.5,
+      "protein_g": 26.1,
+      "carbs_g": 16.099999999999998,
+      "fat_g": 16.7
+    }
+  },
+  {
+    "image": "huevos_revueltos_tostada.jpg",
+    "latency_s": {
+      "vision": 1.19,
+      "rag": 0.06,
+      "usda": 6.51,
+      "total_rag": 1.25,
+      "total_usda": 7.7
+    },
+    "identification": {
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.857,
+      "predicted": [
+        "avocado",
+        "black pepper",
+        "scrambled eggs",
+        "whole wheat bread"
+      ],
+      "ground_truth": [
+        "avocados, raw, all commercial varieties",
+        "bread, whole wheat, toasted",
+        "eggs, grade a, large, egg whole",
+        "oil, olive, salad or cooking"
+      ]
+    },
+    "portion_mae_g": 78.3,
+    "rag": {
+      "predicted": {
+        "calories": 1543.3,
+        "protein_g": 27.3,
+        "carbs_g": 141.6,
+        "fat_g": 96.6
+      },
+      "mae_abs": {
+        "calories": 1083.3,
+        "protein_g": 3.2,
+        "carbs_g": 109.6,
+        "fat_g": 69.4
+      },
+      "mae_pct": {
+        "calories": 235.5,
+        "protein_g": 13.2,
+        "carbs_g": 342.5,
+        "fat_g": 255.1
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 654.5,
+        "protein_g": 36.5,
+        "carbs_g": 49.4,
+        "fat_g": 36.0
+      },
+      "mae_abs": {
+        "calories": 194.5,
+        "protein_g": 12.4,
+        "carbs_g": 17.4,
+        "fat_g": 8.8
+      },
+      "mae_pct": {
+        "calories": 42.3,
+        "protein_g": 51.5,
+        "carbs_g": 54.2,
+        "fat_g": 32.3
+      }
+    },
+    "ground_truth": {
+      "calories": 460.0,
+      "protein_g": 24.099999999999998,
+      "carbs_g": 32.0,
+      "fat_g": 27.200000000000003
+    }
+  },
+  {
+    "image": "lentejas.jpg",
+    "latency_s": {
+      "vision": 1.27,
+      "rag": 0.07,
+      "usda": 7.93,
+      "total_rag": 1.34,
+      "total_usda": 9.2
+    },
+    "identification": {
+      "precision": 0.8,
+      "recall": 0.667,
+      "f1": 0.727,
+      "predicted": [
+        "cooked green lentils",
+        "diced carrots",
+        "diced potatoes",
+        "soup broth",
+        "tomato pieces"
+      ],
+      "ground_truth": [
+        "carrots, raw",
+        "lentils, mature seeds, cooked, boiled",
+        "oil, olive, salad or cooking",
+        "pork, cured, chorizo",
+        "potatoes, flesh and skin, boiled",
+        "tomato sauce, canned"
+      ]
+    },
+    "portion_mae_g": 45.8,
+    "rag": {
+      "predicted": {
+        "calories": 1206.5,
+        "protein_g": 81.4,
+        "carbs_g": 306.4,
+        "fat_g": 5.2
+      },
+      "mae_abs": {
+        "calories": 652.0,
+        "protein_g": 53.8,
+        "carbs_g": 243.5,
+        "fat_g": 17.5
+      },
+      "mae_pct": {
+        "calories": 117.6,
+        "protein_g": 194.8,
+        "carbs_g": 387.1,
+        "fat_g": 77.2
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 576.7,
+        "protein_g": 35.6,
+        "carbs_g": 103.6,
+        "fat_g": 3.8
+      },
+      "mae_abs": {
+        "calories": 22.2,
+        "protein_g": 8.0,
+        "carbs_g": 40.7,
+        "fat_g": 18.9
+      },
+      "mae_pct": {
+        "calories": 4.0,
+        "protein_g": 28.9,
+        "carbs_g": 64.7,
+        "fat_g": 83.3
+      }
+    },
+    "ground_truth": {
+      "calories": 554.5,
+      "protein_g": 27.6,
+      "carbs_g": 62.900000000000006,
+      "fat_g": 22.7
+    }
+  },
+  {
+    "image": "macarrones-con-carne-picada-1024x683.jpg",
+    "latency_s": {
+      "vision": 1.51,
+      "rag": 0.05,
+      "usda": 6.14,
+      "total_rag": 1.56,
+      "total_usda": 7.65
+    },
+    "identification": {
+      "precision": 0.75,
+      "recall": 0.5,
+      "f1": 0.6,
+      "predicted": [
+        "dried flowers",
+        "ground meat",
+        "penne pasta",
+        "tomato sauce"
+      ],
+      "ground_truth": [
+        "beef, ground, 80% lean meat / 20% fat, cooked",
+        "carrots, raw",
+        "oil, olive, salad or cooking",
+        "onions, raw",
+        "pasta, penne, cooked, enriched",
+        "tomato sauce, canned"
+      ]
+    },
+    "portion_mae_g": 36.7,
+    "rag": {
+      "predicted": {
+        "calories": 4956.6,
+        "protein_g": 55.1,
+        "carbs_g": 231.0,
+        "fat_g": 23.3
+      },
+      "mae_abs": {
+        "calories": 4252.7,
+        "protein_g": 16.3,
+        "carbs_g": 159.6,
+        "fat_g": 5.2
+      },
+      "mae_pct": {
+        "calories": 604.2,
+        "protein_g": 41.9,
+        "carbs_g": 223.5,
+        "fat_g": 18.3
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 1259.3,
+        "protein_g": 54.7,
+        "carbs_g": 206.5,
+        "fat_g": 21.7
+      },
+      "mae_abs": {
+        "calories": 555.4,
+        "protein_g": 15.9,
+        "carbs_g": 135.1,
+        "fat_g": 6.8
+      },
+      "mae_pct": {
+        "calories": 78.9,
+        "protein_g": 41.0,
+        "carbs_g": 189.1,
+        "fat_g": 23.8
+      }
+    },
+    "ground_truth": {
+      "calories": 703.9,
+      "protein_g": 38.800000000000004,
+      "carbs_g": 71.39999999999999,
+      "fat_g": 28.5
+    }
+  },
+  {
+    "image": "paella.jpg",
+    "latency_s": {
+      "vision": 1.84,
+      "rag": 0.07,
+      "usda": 6.48,
+      "total_rag": 1.91,
+      "total_usda": 8.32
+    },
+    "identification": {
+      "precision": 1.0,
+      "recall": 0.667,
+      "f1": 0.8,
+      "predicted": [
+        "chicken breast",
+        "green beans",
+        "red bell pepper",
+        "turmeric cooked rice"
+      ],
+      "ground_truth": [
+        "beans, snap, green, cooked, boiled",
+        "chicken, breast, grilled, cooked",
+        "oil, olive, salad or cooking",
+        "peppers, sweet, red, raw",
+        "rice, white, long-grain, cooked",
+        "saffron"
+      ]
+    },
+    "portion_mae_g": 52.5,
+    "rag": {
+      "predicted": {
+        "calories": 6185.1,
+        "protein_g": 32.5,
+        "carbs_g": 239.8,
+        "fat_g": 144.2
+      },
+      "mae_abs": {
+        "calories": 5562.5,
+        "protein_g": 0.4,
+        "carbs_g": 162.2,
+        "fat_g": 125.3
+      },
+      "mae_pct": {
+        "calories": 893.4,
+        "protein_g": 1.1,
+        "carbs_g": 209.1,
+        "fat_g": 663.0
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 745.2,
+        "protein_g": 30.7,
+        "carbs_g": 105.6,
+        "fat_g": 22.2
+      },
+      "mae_abs": {
+        "calories": 122.6,
+        "protein_g": 2.2,
+        "carbs_g": 28.0,
+        "fat_g": 3.3
+      },
+      "mae_pct": {
+        "calories": 19.7,
+        "protein_g": 6.6,
+        "carbs_g": 36.1,
+        "fat_g": 17.4
+      }
+    },
+    "ground_truth": {
+      "calories": 622.6,
+      "protein_g": 32.9,
+      "carbs_g": 77.6,
+      "fat_g": 18.9
+    }
+  },
+  {
+    "image": "pizza-margarita.jpg",
+    "latency_s": {
+      "vision": 1.63,
+      "rag": 0.06,
+      "usda": 7.81,
+      "total_rag": 1.69,
+      "total_usda": 9.44
+    },
+    "identification": {
+      "precision": 1.0,
+      "recall": 0.833,
+      "f1": 0.909,
+      "predicted": [
+        "fresh basil leaves",
+        "mozzarella cheese",
+        "pizza dough",
+        "tomato sauce",
+        "tomato slices"
+      ],
+      "ground_truth": [
+        "basil, fresh",
+        "cheese, mozzarella, whole milk",
+        "oil, olive, salad or cooking",
+        "pizza dough, wheat flour, white",
+        "tomato sauce, canned",
+        "tomatoes, red, ripe, raw"
+      ]
+    },
+    "portion_mae_g": 24.6,
+    "rag": {
+      "predicted": {
+        "calories": 613.9,
+        "protein_g": 28.6,
+        "carbs_g": 87.3,
+        "fat_g": 20.3
+      },
+      "mae_abs": {
+        "calories": 319.0,
+        "protein_g": 13.2,
+        "carbs_g": 21.3,
+        "fat_g": 13.7
+      },
+      "mae_pct": {
+        "calories": 34.2,
+        "protein_g": 31.5,
+        "carbs_g": 19.6,
+        "fat_g": 40.2
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 599.7,
+        "protein_g": 30.3,
+        "carbs_g": 52.5,
+        "fat_g": 30.3
+      },
+      "mae_abs": {
+        "calories": 333.2,
+        "protein_g": 11.5,
+        "carbs_g": 56.1,
+        "fat_g": 3.7
+      },
+      "mae_pct": {
+        "calories": 35.7,
+        "protein_g": 27.6,
+        "carbs_g": 51.7,
+        "fat_g": 10.8
+      }
+    },
+    "ground_truth": {
+      "calories": 932.9,
+      "protein_g": 41.8,
+      "carbs_g": 108.6,
+      "fat_g": 34.0
+    }
+  },
+  {
+    "image": "pollo_y_arroz.jpg",
+    "latency_s": {
+      "vision": 1.45,
+      "rag": 0.06,
+      "usda": 4.5,
+      "total_rag": 1.51,
+      "total_usda": 5.95
+    },
+    "identification": {
+      "precision": 0.667,
+      "recall": 0.667,
+      "f1": 0.667,
+      "predicted": [
+        "cooked white rice",
+        "dill",
+        "grilled chicken breast"
+      ],
+      "ground_truth": [
+        "chicken, breast, grilled, cooked",
+        "oil, olive, salad or cooking",
+        "rice, white, long-grain, cooked"
+      ]
+    },
+    "portion_mae_g": 20.0,
+    "rag": {
+      "predicted": {
+        "calories": 2575.2,
+        "protein_g": 48.8,
+        "carbs_g": 193.0,
+        "fat_g": 25.5
+      },
+      "mae_abs": {
+        "calories": 1979.3,
+        "protein_g": 3.1,
+        "carbs_g": 136.6,
+        "fat_g": 9.5
+      },
+      "mae_pct": {
+        "calories": 332.2,
+        "protein_g": 5.9,
+        "carbs_g": 242.1,
+        "fat_g": 59.4
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 583.9,
+        "protein_g": 26.0,
+        "carbs_g": 69.7,
+        "fat_g": 21.7
+      },
+      "mae_abs": {
+        "calories": 12.0,
+        "protein_g": 25.9,
+        "carbs_g": 13.3,
+        "fat_g": 5.7
+      },
+      "mae_pct": {
+        "calories": 2.0,
+        "protein_g": 49.9,
+        "carbs_g": 23.5,
+        "fat_g": 35.9
+      }
+    },
+    "ground_truth": {
+      "calories": 595.9,
+      "protein_g": 51.9,
+      "carbs_g": 56.4,
+      "fat_g": 16.0
+    }
+  },
+  {
+    "image": "salmon.jpg",
+    "latency_s": {
+      "vision": 1.38,
+      "rag": 0.04,
+      "usda": 4.65,
+      "total_rag": 1.42,
+      "total_usda": 6.03
+    },
+    "identification": {
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.857,
+      "predicted": [
+        "roasted broccoli",
+        "roasted potatoes",
+        "salmon fillet"
+      ],
+      "ground_truth": [
+        "broccoli, cooked, boiled, drained",
+        "fish, salmon, atlantic, cooked, dry heat",
+        "oil, olive, salad or cooking",
+        "potatoes, flesh and skin, baked"
+      ]
+    },
+    "portion_mae_g": 20.0,
+    "rag": {
+      "predicted": {
+        "calories": 1786.0,
+        "protein_g": 21.6,
+        "carbs_g": 77.3,
+        "fat_g": 155.1
+      },
+      "mae_abs": {
+        "calories": 1132.4,
+        "protein_g": 20.5,
+        "carbs_g": 44.7,
+        "fat_g": 115.5
+      },
+      "mae_pct": {
+        "calories": 173.3,
+        "protein_g": 48.8,
+        "carbs_g": 137.1,
+        "fat_g": 291.6
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 174.5,
+        "protein_g": 6.1,
+        "carbs_g": 39.0,
+        "fat_g": 0.6
+      },
+      "mae_abs": {
+        "calories": 479.1,
+        "protein_g": 36.0,
+        "carbs_g": 6.4,
+        "fat_g": 39.0
+      },
+      "mae_pct": {
+        "calories": 73.3,
+        "protein_g": 85.4,
+        "carbs_g": 19.6,
+        "fat_g": 98.5
+      }
+    },
+    "ground_truth": {
+      "calories": 653.5999999999999,
+      "protein_g": 42.1,
+      "carbs_g": 32.6,
+      "fat_g": 39.6
+    }
+  },
+  {
+    "image": "tortilla_francesa.jpg",
+    "latency_s": {
+      "vision": 1.24,
+      "rag": 0.05,
+      "usda": 4.66,
+      "total_rag": 1.29,
+      "total_usda": 5.9
+    },
+    "identification": {
+      "precision": 0.667,
+      "recall": 1.0,
+      "f1": 0.8,
+      "predicted": [
+        "cooking oil or butter",
+        "omelette",
+        "residual egg"
+      ],
+      "ground_truth": [
+        "eggs, grade a, large, egg whole",
+        "oil, olive, salad or cooking"
+      ]
+    },
+    "portion_mae_g": 42.5,
+    "rag": {
+      "predicted": {
+        "calories": 922.3,
+        "protein_g": 18.9,
+        "carbs_g": 104.3,
+        "fat_g": 19.5
+      },
+      "mae_abs": {
+        "calories": 619.4,
+        "protein_g": 0.0,
+        "carbs_g": 103.2,
+        "fat_g": 4.7
+      },
+      "mae_pct": {
+        "calories": 204.5,
+        "protein_g": 0.0,
+        "carbs_g": 9381.6,
+        "fat_g": 19.4
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 399.2,
+        "protein_g": 26.8,
+        "carbs_g": 2.1,
+        "fat_g": 30.5
+      },
+      "mae_abs": {
+        "calories": 96.3,
+        "protein_g": 7.9,
+        "carbs_g": 1.0,
+        "fat_g": 6.3
+      },
+      "mae_pct": {
+        "calories": 31.8,
+        "protein_g": 41.7,
+        "carbs_g": 88.5,
+        "fat_g": 26.1
+      }
+    },
+    "ground_truth": {
+      "calories": 302.9,
+      "protein_g": 18.9,
+      "carbs_g": 1.1,
+      "fat_g": 24.2
+    }
+  },
+  {
+    "image": "wraps_pollo.jpg",
+    "latency_s": {
+      "vision": 1.32,
+      "rag": 0.08,
+      "usda": 6.13,
+      "total_rag": 1.4,
+      "total_usda": 7.45
+    },
+    "identification": {
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.857,
+      "predicted": [
+        "avocado",
+        "mixed greens salad",
+        "shredded chicken breast",
+        "whole wheat tortilla"
+      ],
+      "ground_truth": [
+        "avocados, raw, all commercial varieties",
+        "chicken, breast, grilled, cooked",
+        "lettuce, cos or romaine, raw",
+        "tortillas, flour, white, ready-to-cook"
+      ]
+    },
+    "portion_mae_g": 26.7,
+    "rag": {
+      "predicted": {
+        "calories": 4682.0,
+        "protein_g": 6.0,
+        "carbs_g": 31.1,
+        "fat_g": 182.5
+      },
+      "mae_abs": {
+        "calories": 3978.2,
+        "protein_g": 42.6,
+        "carbs_g": 38.8,
+        "fat_g": 156.7
+      },
+      "mae_pct": {
+        "calories": 565.2,
+        "protein_g": 87.7,
+        "carbs_g": 55.5,
+        "fat_g": 607.5
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 618.1,
+        "protein_g": 28.0,
+        "carbs_g": 69.2,
+        "fat_g": 27.0
+      },
+      "mae_abs": {
+        "calories": 85.7,
+        "protein_g": 20.6,
+        "carbs_g": 0.7,
+        "fat_g": 1.2
+      },
+      "mae_pct": {
+        "calories": 12.2,
+        "protein_g": 42.4,
+        "carbs_g": 0.9,
+        "fat_g": 4.5
+      }
+    },
+    "ground_truth": {
+      "calories": 703.8,
+      "protein_g": 48.6,
+      "carbs_g": 69.89999999999999,
+      "fat_g": 25.8
+    }
+  },
+  {
+    "image": "yogur_miel.jpg",
+    "latency_s": {
+      "vision": 1.44,
+      "rag": 0.06,
+      "usda": 4.85,
+      "total_rag": 1.5,
+      "total_usda": 6.29
+    },
+    "identification": {
+      "precision": 0.667,
+      "recall": 0.667,
+      "f1": 0.667,
+      "predicted": [
+        "caramel sauce",
+        "greek yogurt",
+        "walnuts"
+      ],
+      "ground_truth": [
+        "honey",
+        "walnuts, english",
+        "yogurt, greek, plain, whole milk"
+      ]
+    },
+    "portion_mae_g": 27.5,
+    "rag": {
+      "predicted": {
+        "calories": 742.1,
+        "protein_g": 10.8,
+        "carbs_g": 30.8,
+        "fat_g": 15.3
+      },
+      "mae_abs": {
+        "calories": 341.3,
+        "protein_g": 10.3,
+        "carbs_g": 0.3,
+        "fat_g": 7.7
+      },
+      "mae_pct": {
+        "calories": 85.2,
+        "protein_g": 48.7,
+        "carbs_g": 1.0,
+        "fat_g": 33.7
+      }
+    },
+    "usda": {
+      "predicted": {
+        "calories": 297.4,
+        "protein_g": 0.9,
+        "carbs_g": 15.4,
+        "fat_g": 26.6
+      },
+      "mae_abs": {
+        "calories": 103.4,
+        "protein_g": 20.2,
+        "carbs_g": 15.1,
+        "fat_g": 3.6
+      },
+      "mae_pct": {
+        "calories": 25.8,
+        "protein_g": 95.6,
+        "carbs_g": 49.5,
+        "fat_g": 15.7
+      }
+    },
+    "ground_truth": {
+      "calories": 400.8,
+      "protein_g": 21.1,
+      "carbs_g": 30.5,
+      "fat_g": 23.0
+    }
+  }
+]

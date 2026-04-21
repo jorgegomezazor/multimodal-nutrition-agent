@@ -1,5 +1,3 @@
-"""Módulo RAG: recupera información nutricional de la base vectorial USDA."""
-
 import chromadb
 from chromadb.config import Settings
 

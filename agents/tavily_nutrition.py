@@ -1,5 +1,3 @@
-"""Modulo de nutricion via Tavily: busca datos reales para cada ingrediente."""
-
 import re
 
 from tavily import TavilyClient

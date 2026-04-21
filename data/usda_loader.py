@@ -1,5 +1,3 @@
-"""Descarga y preprocesa datos de USDA FoodData Central."""
-
 import os
 import requests
 import pandas as pd

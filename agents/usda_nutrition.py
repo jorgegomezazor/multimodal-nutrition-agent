@@ -1,5 +1,3 @@
-"""Nutricion via USDA FoodData Central API — datos estructurados por 100 g."""
-
 from data.usda_loader import fetch_usda_foods
 from utils.schemas import Ingredient, NutritionInfo
 

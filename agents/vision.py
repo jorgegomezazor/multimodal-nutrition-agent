@@ -1,5 +1,3 @@
-"""Módulo de visión: identifica ingredientes a partir de una imagen."""
-
 import json
 import time
 

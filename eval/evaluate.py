@@ -1,23 +1,3 @@
-"""
-Evaluacion de NutriVision — RAG vs Tavily.
-
-Estructura esperada en eval/test_images/:
-    plato.jpg  +  plato.json
-
-Formato JSON:
-{
-    "image_file": "plato.jpg",
-    "ingredients": [
-        {"name": "white rice", "grams": 200,
-         "calories": 260, "protein_g": 4.8, "carbs_g": 57.0, "fat_g": 0.4, "fiber_g": 0.6}
-    ]
-}
-
-Uso:
-    python -m eval.evaluate
-    python -m eval.evaluate --save eval/results.json
-"""
-
 import argparse
 import base64
 import json

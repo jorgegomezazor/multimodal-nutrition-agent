@@ -1,5 +1,3 @@
-"""Construye el índice vectorial ChromaDB a partir del CSV de USDA."""
-
 import pandas as pd
 import chromadb
 from chromadb.config import Settings

@@ -1,5 +1,3 @@
-"""SQLite database — perfiles de usuario y registro de comidas."""
-
 import json
 import sqlite3
 from pathlib import Path

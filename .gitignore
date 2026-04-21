@@ -19,7 +19,7 @@ data/nutrivision.db
 data/usda_foods.csv
 
 # Resultados de evaluación (opcionales, se regeneran)
-eval/results.json
+# eval/results.json
 
 # Streamlit
 .streamlit/secrets.toml

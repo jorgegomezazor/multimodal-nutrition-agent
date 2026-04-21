@@ -1,5 +1,3 @@
-"""Módulo de razonamiento: genera el informe nutricional personalizado."""
-
 from huggingface_hub import InferenceClient
 
 from config import HF_TOKEN, REASONING_MODEL_ID

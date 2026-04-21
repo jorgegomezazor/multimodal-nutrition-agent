@@ -1,5 +1,3 @@
-"""NutriVision — Dashboard: historial y gráficas del usuario."""
-
 from datetime import date
 
 import pandas as pd
